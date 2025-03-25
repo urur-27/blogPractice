@@ -33,7 +33,7 @@ public class UserController {
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
         try {
             String token = userService.login(request);
-            return ResponseEntity.ok("로그인 성공" + new LoginResponse(token));
+            return ResponseEntity.ok(new LoginResponse(token));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인 실패: " + e.getMessage());
         }
